@@ -72,7 +72,8 @@ class MusicianMasterTableViewController: UITableViewController
         let aMusician = musicians[indexPath.row]
         cell.nameLabel.text = aMusician.name
         cell.moneyLabel.text = aMusician.paymentPerShow
-        cell.musicianImageView.image = UIImage(named: "\(aMusician.name).jpg")
+      //  cell.musicianImageView.image = UIImage(named: "\(aMusician.name).jpg")
+       // cell.musicianImageView.image = UIImage(named: "\(aMusician.name).jpeg")
         
 
         return cell
