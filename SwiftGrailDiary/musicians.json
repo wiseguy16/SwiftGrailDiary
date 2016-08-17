@@ -1,0 +1,16 @@
+ [
+  {
+    "name": "Thor",
+    "paymentPerShow": "$100Million",
+    "foundedOrBorn": "1987",
+    "bio": "Superhuman strength, endurance, and longevity; abilities via Mjolnir: dimensional transportation; electric manipulation; flight; weather manipulation",
+    "musicianImage": "thor"
+  },
+  {
+    "name": "Captain America",
+    "paymentPerShow": "$250Billion",
+    "foundedOrBorn": "1987",
+    "bio": "Peak physical condition; wields vibranium-steel alloy shield; expert tactician and field commander",
+    "musicianImage": "captainAmerica"
+  }
+]
