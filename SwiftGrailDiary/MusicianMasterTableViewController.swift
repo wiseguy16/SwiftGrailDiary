@@ -8,15 +8,20 @@
 
 import UIKit
 
-class MusicianMasterTableViewController: UITableViewController {
+class MusicianMasterTableViewController: UITableViewController
+{
+    
+    var musicians = [Musician]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadMusicians()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // Uncomment the following line to display an Edit button in var navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
@@ -24,28 +29,74 @@ class MusicianMasterTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func loadMusicians()
+    {
+            do
+            {
+                let filePath = Bundle.main.path(forResource: "musicians", ofType: "json")
+                let dataFromFile = try? Data(contentsOf: URL(fileURLWithPath: filePath!))
+                let musicianData: NSArray! = try JSONSerialization.jsonObject(with: dataFromFile!, options: []) as! NSArray
+                for musicianDictionary in musicianData
+                {
+                    let aMusician = Musician(dictionary: musicianDictionary as! NSDictionary)
+                    musicians.append(aMusician)
+                }
+            }
+            catch let error as NSError
+            {
+                print(error)
+            }
+    }
+    
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return musicians.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->  UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MusicianCell", for: indexPath) as! MusicianCustomCell
 
         // Configure the cell...
+        let aMusician = musicians[indexPath.row]
+        cell.nameLabel.text = aMusician.name
+        cell.moneyLabel.text = aMusician.paymentPerShow
+        cell.musicianImageView.image = UIImage(named: "\(aMusician.name).jpg")
+        
 
         return cell
     }
-    */
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+       
+      //  tableView.deselectRow(at: indexPath, animated: true)
+      //  var newMusicianVC = self.storyboard?.instantiateViewController(withIdentifier: "MusicianDetailVC")
+     //   navigationController?.pushViewController(newMusicianVC!, animated: true)
+       // let selectedMusician = musicians[indexPath.row]
+    //    newMusicianVC = selectedMusician
+        
+        
+        /*
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        MusicianDetailViewController *newMusicianVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MusicianDetailVC"];
+        [[self navigationController] pushViewController:newMusicianVC animated:YES];
+        
+        Musician *selectedMusician = self.musicians[indexPath.row];
+        newMusicianVC.musician = selectedMusician;
+ */
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,14 +133,41 @@ class MusicianMasterTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "MusicianDetailSegue"
+        {
+            let detailVC = segue.destination as! MusicianDetailViewController
+         //   let selectedCell = sender as! UITableViewCell
+           // let indexPath = tableView.indexPath(for: selectedCell)
+            let indexPath: NSIndexPath = tableView.indexPathForSelectedRow!
+            let selectedMusician = musicians[(indexPath.row)]
+            detailVC.aMusician = selectedMusician
+            
+            
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
+ 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

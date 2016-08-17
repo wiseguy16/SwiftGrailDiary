@@ -7,22 +7,61 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Musician Master Table View Controller-->
+        <!--Highest Paid Per Show-->
         <scene sceneID="taM-d0-DPn">
             <objects>
                 <tableViewController id="XZY-Js-7GQ" customClass="MusicianMasterTableViewController" customModule="SwiftGrailDiary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="DNS-TT-BFH">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" id="DNS-TT-BFH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Mpq-Th-kcq">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MusicianCell" rowHeight="91" id="Mpq-Th-kcq" customClass="MusicianCustomCell" customModule="SwiftGrailDiary" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mpq-Th-kcq" id="sId-cI-AIP">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s44-lD-Vw0">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="110" id="5id-2n-jnV"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRl-le-416">
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mMoney" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k93-Pj-D9u">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.13551682233810425" green="0.45673513412475586" blue="0.16266146302223206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment per show:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbh-3o-gyd">
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MRl-le-416" firstAttribute="top" secondItem="sId-cI-AIP" secondAttribute="topMargin" id="1IV-ja-9J0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="k93-Pj-D9u" secondAttribute="trailing" id="DYh-ZA-xX4"/>
+                                        <constraint firstItem="s44-lD-Vw0" firstAttribute="bottom" secondItem="sId-cI-AIP" secondAttribute="bottomMargin" id="E9W-iQ-oA2"/>
+                                        <constraint firstItem="s44-lD-Vw0" firstAttribute="leading" secondItem="sId-cI-AIP" secondAttribute="leadingMargin" id="PU3-4s-BUz"/>
+                                        <constraint firstItem="k93-Pj-D9u" firstAttribute="top" secondItem="MRl-le-416" secondAttribute="bottom" constant="8" id="Vl7-EQ-JjG"/>
+                                        <constraint firstItem="Vbh-3o-gyd" firstAttribute="centerY" secondItem="k93-Pj-D9u" secondAttribute="centerY" id="YR9-0q-qQT"/>
+                                        <constraint firstItem="k93-Pj-D9u" firstAttribute="leading" secondItem="Vbh-3o-gyd" secondAttribute="trailing" constant="8" id="d4F-CO-Cra"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="MRl-le-416" secondAttribute="trailing" id="mEl-qS-LEP"/>
+                                        <constraint firstItem="s44-lD-Vw0" firstAttribute="top" secondItem="sId-cI-AIP" secondAttribute="topMargin" id="sBf-Dj-eGl"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="moneyLabel" destination="k93-Pj-D9u" id="qfm-Jf-2vn"/>
+                                    <outlet property="musicianImageView" destination="s44-lD-Vw0" id="QEk-hS-gj7"/>
+                                    <outlet property="nameLabel" destination="MRl-le-416" id="Fcu-5E-b5s"/>
+                                    <segue destination="jic-7i-wTQ" kind="show" identifier="MusicianDetailSegue" id="Dx6-NV-72U"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -30,7 +69,7 @@
                             <outlet property="delegate" destination="XZY-Js-7GQ" id="WkV-rQ-oA8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ay7-Z5-36U"/>
+                    <navigationItem key="navigationItem" title="Highest Paid Per Show" id="ay7-Z5-36U"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="if7-0h-2qA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,7 +78,7 @@
         <!--Musician Detail View Controller-->
         <scene sceneID="gb9-Eq-gRD">
             <objects>
-                <viewController id="jic-7i-wTQ" customClass="MusicianDetailViewController" customModule="SwiftGrailDiary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MusicianDetailVC" id="jic-7i-wTQ" customClass="MusicianDetailViewController" customModule="SwiftGrailDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQD-10-nlh"/>
                         <viewControllerLayoutGuide type="bottom" id="DFY-q4-EFn"/>
@@ -98,6 +137,14 @@
                             <constraint firstItem="vXU-QF-SCH" firstAttribute="top" secondItem="Vh1-yu-bcc" secondAttribute="bottom" constant="20" id="xt4-uI-llb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailBioLabel" destination="vXU-QF-SCH" id="Cr1-gv-hGu"/>
+                        <outlet property="detailFinePrintLabel" destination="nfV-Eh-aHy" id="dq6-sU-KC3"/>
+                        <outlet property="detailFoundedLabel" destination="Vh1-yu-bcc" id="mTv-M8-itb"/>
+                        <outlet property="detailImage" destination="3iA-5N-jZe" id="b3m-jY-EMn"/>
+                        <outlet property="detailMoneyLabel" destination="m4k-XH-gR0" id="uNn-aY-yRd"/>
+                        <outlet property="detailNameLabel" destination="JG1-Je-5cl" id="3z3-di-JVT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kan-aE-DGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
